@@ -1,4 +1,4 @@
-# cargo.el
+# forge.el
 
 Forge mode for Emacs. This package gives you a set of key combinations to perform Forge tasks within your FSharp projects.
 
@@ -15,7 +15,7 @@ M-x package-install forge
 Add forge-minor-mode to your fsharp-mode-hook
 
 ```el
-(add-hook 'fsharp-mode-hook 'cargo-minor-mode)
+(add-hook 'fsharp-mode-hook 'forge-minor-mode)
 ```
 
 You will now have the following key combinations at your disposal:
