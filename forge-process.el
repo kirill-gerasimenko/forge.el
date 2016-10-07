@@ -177,7 +177,8 @@ Signal an error if the command returns with a non-one exit status (forge exits w
     (switch-to-buffer buffer)
     (erase-buffer)
     (save-excursion
-      (call-process-shell-command command nil (current-buffer) nil))))
+      (call-process-shell-command command nil (current-buffer) nil)
+      (view-buffer buffer))))
 
 (defun forge-process--compilation-name (mode-name)
   "Name of the Forge Process.  MODE-NAME is unused."
@@ -362,7 +363,7 @@ POSITION-TYPE is where to add the file within the project."
   (interactive
    (let ((fsproj (forge-process--find-fsproj default-directory)))
      (list
-      (read-file-name "Project: " nil fsproj t (file-name-nondirectory fsproj))
+      (read-file-name "Project: " nil fsproj t fsproj nil)
       (read-file-name "File: " nil nil t)
       (completing-read "Build Action: " forge-process--build-actions
                        nil t nil nil "Compile" nil)
@@ -395,7 +396,7 @@ NAME is the name of the reference to add to the project."
   (interactive
    (let ((fsproj (forge-process--find-fsproj default-directory)))
      (list
-      (read-file-name "Project: " nil fsproj t (file-name-nondirectory fsproj))
+      (read-file-name "Project: " nil fsproj t fsproj nil)
       (read-string "Reference: "))))
   (let* ((name-less-ext (replace-regexp-in-string "\.dll$" "" name))
          (command (format "forge add reference --project %s --name %s"
@@ -415,10 +416,10 @@ NAME is the name of the reference to add to the project."
   (interactive
    (let ((fsproj (forge-process--find-fsproj default-directory)))
      (list
-      (read-file-name "Project: " nil fsproj t (file-name-nondirectory fsproj)))))
+      (read-file-name "Project: " nil fsproj t fsproj nil))))
   (let* ((file-list (forge-process--file-list-by-project project))
          (name (completing-read "File: " file-list nil t))
-         (command (format "forge move file --project %s --name %s" project name)))
+         (command (format "forge remove file --project %s --name %s" project name)))
     (forge-process--execute-command command)
     (message "Removed file %s from %s."
              (file-name-nondirectory name)
@@ -491,8 +492,9 @@ NAME is the new name for the project."
 (defun forge-process--list-files (project)
   "List the files in the PROJECT."
   (interactive
-   (list
-    (read-file-name "Project: ")))
+   (let ((fsproj (forge-process--find-fsproj default-directory)))
+     (list
+      (read-file-name "Project: " nil fsproj t fsproj nil))))
   (let ((command (format "forge list files --project %s" project)))
     (forge-process--execute-command-buffer command "*forge list files project*")))
 
