@@ -21,20 +21,27 @@
 ;;; Commentary:
 
 ;; Forge Process Major mode.
-;; Used to run Forge background processes.
+;; Used to run Forge commands.
 ;; Current supported Forge functions:
-;;  * forge-process--new               - Run the forge new command
-;;  * forge-process--file-add          - Run the forge file add command
-;;  * forge-process--file-remove       - Run the forge file remove command
-;;  * forge-process--file-list         - Run the forge file list command
-;;  * forge-process--ref-add           - Run the forge reference add command
-;;  * forge-process--ref-remove        - Run the forge reference remove command
-;;  * forge-process--ref-list          - Run the forge reference list command
-;;  * forge-process--paket-run         - Run the forge paket command
-;;  * forge-process--paket-update      - Run the forge update paket command
-;;  * forge-process--fake-run          - Run the forge fake command
-;;  * forge-process--fake-update       - Run the forge update fake command
-;;  * forge-process--template-refresh  - Run the forge refresh command
+;;  * forge-process--new-project             - Run the forge new project command
+;;  * forge-process--new-file                - Run the forge new file command
+;;  * forge-process--add-file                - Run the forge add file command
+;;  * forge-process--add-reference           - Run the forge add reference command
+;;  * forge-process--remove-file             - Run the forge remove file command
+;;  * forge-process--remove-reference        - Run the forge remove reference command
+;;  * forge-process--rename-file             - Run the forge rename file command
+;;  * forge-process--rename-project          - Run the forge rename project command
+;;  * forge-process--list-files              - Run the forge list files command
+;;  * forge-process--list-references         - Run the forge list references command
+;;  * forge-process--list-project-references - Run the forge list project references command
+;;  * forge-process--list-gac                - Run the forge list gac command
+;;  * forge-process--list-templates          - Run the forge list templates command
+;;  * forge-process--move-file               - Run the forge move file command
+;;  * forge-process--update-paket            - Run the forge update paket command
+;;  * forge-process--update-fake             - Run the forge update fake command
+;;  * forge-process--paket                   - Run the forge paket command
+;;  * forge-process--fake                    - Run the forge fake command
+
 
 
 ;; TODO:

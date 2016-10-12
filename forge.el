@@ -25,13 +25,24 @@
 ;; Forge Minor mode.
 ;; Provides a number of key combinations and functions for managing Forge.
 ;; Current supported Forge Key Combinations:
-;;  * C-c C-c C-n - forge-process-new
-;;  * C-c C-c C-f - forge-process-file
-;;  * C-c C-c C-r - forge-process-reference
-;;  * C-c C-c C-u - forge-process-update
-;;  * C-c C-c C-p - forge-process-paket
-;;  * C-c C-c C-c - forge-process-fake
-;;  * C-c C-c C-e - forge-process-refresh
+;;  * forge-process--new-project
+;;  * forge-process--new-file
+;;  * forge-process--add-file
+;;  * forge-process--add-reference
+;;  * forge-process--remove-file
+;;  * forge-process--remove-reference
+;;  * forge-process--rename-file
+;;  * forge-process--rename-project
+;;  * forge-process--list-files
+;;  * forge-process--list-references
+;;  * forge-process--list-project-references
+;;  * forge-process--list-gac
+;;  * forge-process--list-templates
+;;  * forge-process--move-file
+;;  * forge-process--update-paket
+;;  * forge-process--update-fake
+;;  * forge-process--paket
+;;  * forge-process--fake
 ;;
 ;;; Code:
 
@@ -50,13 +61,24 @@
   "Forge minor mode. Used to hold keybindings for forge-mode"
   nil "forge" forge-minor-mode-map)
 
-(define-key forge-minor-mode-map (kbd "C-c C-c C-n") 'forge-process-new)
-(define-key forge-minor-mode-map (kbd "C-c C-c C-f") 'forge-process-file)
-(define-key forge-minor-mode-map (kbd "C-c C-c C-r") 'forge-process-reference)
-(define-key forge-minor-mode-map (kbd "C-c C-c C-u") 'forge-process-update)
-(define-key forge-minor-mode-map (kbd "C-c C-c C-p") 'forge-process-paket)
-(define-key forge-minor-mode-map (kbd "C-c C-c C-c") 'forge-process-fake)
-(define-key forge-minor-mode-map (kbd "C-c C-c C-e") 'forge-process-refresh)
+(define-key (kbd "C-c C-c C-n p") 'forge-process--new-project)
+(define-key (kbd "C-c C-c C-n f") 'forge-process--new-file)
+(define-key (kbd "C-c C-c C-a f") 'forge-process--add-file)
+(define-key (kbd "C-c C-c C-a r") 'forge-process--add-reference)
+(define-key (kbd "C-c C-c C-r f") 'forge-process--remove-file)
+(define-key (kbd "C-c C-c C-r r") 'forge-process--remove-reference)
+(define-key (kbd "C-c C-c C-x f") 'forge-process--rename-file)
+(define-key (kbd "C-c C-c C-x p") 'forge-process--rename-project)
+(define-key (kbd "C-c C-c C-l f") 'forge-process--list-files)
+(define-key (kbd "C-c C-c C-l f") 'forge-process--list-references)
+(define-key (kbd "C-c C-c C-l p") 'forge-process--list-project-references)
+(define-key (kbd "C-c C-c C-l g") 'forge-process--list-gac)
+(define-key (kbd "C-c C-c C-l t") 'forge-process--list-templates)
+(define-key (kbd "C-c C-c C-m f") 'forge-process--move-file)
+(define-key (kbd "C-c C-c C-u p") 'forge-process--update-paket)
+(define-key (kbd "C-c C-c C-u f") 'forge-process--update-fake)
+(define-key (kbd "C-c C-c C-p") 'forge-process--paket)
+(define-key (kbd "C-c C-c C-f") 'forge-process--fake)
 
 (provide 'forge)
 ;;; forge.el ends here
